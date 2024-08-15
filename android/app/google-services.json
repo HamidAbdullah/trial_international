@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "334363820754",
+    "project_id": "cloud-function-197bc",
+    "storage_bucket": "cloud-function-197bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334363820754:android:30d01ef775d62746a3a30b",
+        "android_client_info": {
+          "package_name": "com.trailinternational"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3HY7O0qrruRdo_YUVszKOgyAnW2pDRCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
