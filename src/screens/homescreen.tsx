@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   TextInput,
@@ -6,8 +6,11 @@ import {
   StyleSheet,
   ActivityIndicator,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {httpsCallable, functions} from '../firebaseConfig';
+import auth from '@react-native-firebase/auth';
+import {useNavigation} from '@react-navigation/native';
 
 const HomeScreen = () => {
   const [a, setA] = useState('');
@@ -15,13 +18,29 @@ const HomeScreen = () => {
   const [result, setResult] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [operation, setOperation] = useState('');
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState<any>();
+
+  const navigation = useNavigation();
+
+  function onAuthStateChanged(user: any) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  }, []);
+
+  if (initializing) return null;
 
   const calculate = async (op: string) => {
     setLoading(true);
     setOperation(op);
     try {
       const callable = httpsCallable(functions, op);
-      const response = await callable({ a: Number(a), b: Number(b) });
+      const response = await callable({a: Number(a), b: Number(b)});
       // @ts-ignore
       setResult(response.data.result);
     } catch (error) {
@@ -30,6 +49,33 @@ const HomeScreen = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const logout = () => {
+    Alert.alert(
+      'Logout',
+      'Are you sure you want to logout?',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Logout cancelled'),
+          style: 'cancel',
+        },
+        {
+          text: 'Yes',
+          onPress: () => {
+            auth()
+              .signOut()
+              .then(() => {
+                console.log('User signed out!');
+                navigation.navigate('SignInScreen' as never);
+              })
+              .catch(error => console.error('Error signing out: ', error));
+          },
+        },
+      ],
+      {cancelable: true},
+    );
   };
 
   return (
@@ -78,6 +124,17 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
       {loading && <ActivityIndicator size="large" color="#0000ff" />}
+
+      <Text
+        style={{
+          fontSize: 20,
+          color: 'red',
+          textAlign: 'right',
+          marginBottom: 20,
+        }}
+        onPress={logout}>
+        Logout
+      </Text>
     </View>
   );
 };
@@ -96,7 +153,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 4,
     fontSize: 23,
-    
   },
   buttonContainer: {
     marginBottom: 16,
@@ -121,19 +177,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#4caf50',
   },
   subtractButton: {
-    backgroundColor: '#f44336', 
+    backgroundColor: '#f44336',
   },
   multiplyButton: {
-    backgroundColor: '#ff9800', 
+    backgroundColor: '#ff9800',
   },
   divideButton: {
-    backgroundColor: '#2196f3', 
+    backgroundColor: '#2196f3',
   },
   result: {
     marginTop: 16,
     fontSize: 25,
-    textAlign: 'center', 
-    color: '#000', 
+    textAlign: 'center',
+    color: '#000',
     marginBottom: 30,
   },
 });

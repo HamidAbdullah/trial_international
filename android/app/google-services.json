@@ -1,26 +1,36 @@
 {
   "project_info": {
-    "project_number": "334363820754",
-    "project_id": "cloud-function-197bc",
-    "storage_bucket": "cloud-function-197bc.appspot.com"
+    "project_number": "1051552018503",
+    "project_id": "fir-learning-ccf18",
+    "storage_bucket": "fir-learning-ccf18.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:334363820754:android:30d01ef775d62746a3a30b",
+        "mobilesdk_app_id": "1:1051552018503:android:04c74f538a09bd01c78162",
         "android_client_info": {
           "package_name": "com.trailinternational"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1051552018503-20s3tfvol5qilh6t3td6ojnm939jsehb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyB3HY7O0qrruRdo_YUVszKOgyAnW2pDRCY"
+          "current_key": "AIzaSyBE4JMP-h9e2sXSR58LRU6PyPde-xPnTYI"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1051552018503-20s3tfvol5qilh6t3td6ojnm939jsehb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

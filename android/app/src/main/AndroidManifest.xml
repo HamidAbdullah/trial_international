@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <meta-data
+    android:name="com.google.android.gms.auth.api.credentials.ClientId"
+    android:value="1051552018503-20s3tfvol5qilh6t3td6ojnm939jsehb.apps.googleusercontent.com" />
 
     <application
       android:name=".MainApplication"
