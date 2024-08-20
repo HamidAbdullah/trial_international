@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
+
 import {
   GoogleSignin,
   statusCodes,
@@ -29,7 +30,7 @@ const SignInScreen: React.FC = () => {
 
   const handleSignIn = async () => {
     if (!email || !password) {
-      Alert.alert('Error', 'Please fill in all fields');
+      Alert.alert('Error', 'Please in all fields');
       return;
     }
 
