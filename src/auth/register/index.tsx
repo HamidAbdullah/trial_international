@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, TextInput, StyleSheet, Button, Alert} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {useNavigation} from '@react-navigation/native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const RegisterScreen: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -56,7 +57,19 @@ const RegisterScreen: React.FC = () => {
       />
 
       <Button title="Register" onPress={handleRegister} />
-      <Text style= {styles.title} onPress={()=> navigation.navigate('SignInScreen' as never)}>Already Account</Text>
+      <TouchableOpacity
+        style={{
+          marginHorizontal: 10,
+          height: 50,
+          backgroundColor: 'green',
+          justifyContent: 'center',
+          alignContent: 'center',
+          marginTop: 30,
+          borderRadius: 20
+        }}
+        onPress={() => navigation.navigate('SignInScreen' as never)}>
+        <Text style={[styles.title, {color: '#fff'}]}>Already Account</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -70,7 +83,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    marginBottom: 20,
     textAlign: 'center',
   },
   input: {

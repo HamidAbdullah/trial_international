@@ -53,7 +53,9 @@ const SignInScreen: React.FC = () => {
   async function onGoogleButtonPress() {
     try {
       await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
-      console.log(GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true}))
+      console.log(
+        GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true}),
+      );
       const {idToken} = await GoogleSignin.signIn();
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
       console.log({googleCredential: googleCredential});
@@ -67,7 +69,7 @@ const SignInScreen: React.FC = () => {
       } else if (e.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         console.log('statusCodes.IN_PROGRESS');
       }
-    } 
+    }
   }
   return (
     <View style={styles.container}>
@@ -91,8 +93,18 @@ const SignInScreen: React.FC = () => {
       />
 
       <Button title="Sign In" onPress={handleSignIn} />
-      <TouchableOpacity onPress={() => onGoogleButtonPress()}>
-        <Text>Continue with Google</Text>
+      <TouchableOpacity
+        style={{
+          marginHorizontal: 10,
+          height: 50,
+          backgroundColor: 'green',
+          justifyContent: 'center',
+          alignContent: 'center',
+          marginTop: 30,
+          borderRadius: 20
+        }}
+        onPress={() => onGoogleButtonPress()}>
+        <Text style={[styles.title, {color: '#fff'}]}>Continue with Google</Text>
       </TouchableOpacity>
     </View>
   );
@@ -107,7 +119,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    marginBottom: 20,
     textAlign: 'center',
   },
   input: {

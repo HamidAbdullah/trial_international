@@ -3417,6 +3417,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-firebase/database@npm:^20.4.0":
+  version: 20.4.0
+  resolution: "@react-native-firebase/database@npm:20.4.0"
+  peerDependencies:
+    "@react-native-firebase/app": 20.4.0
+  checksum: 3650f2338abfe413458704512cf3d7c4fea6f12c48dc73e2dde2229e64056bd9304e145a848711ec5178c67b780487325f2129fd02b87e9bd2ae71af0d0c2a82
+  languageName: node
+  linkType: hard
+
+"@react-native-firebase/firestore@npm:^20.4.0":
+  version: 20.4.0
+  resolution: "@react-native-firebase/firestore@npm:20.4.0"
+  peerDependencies:
+    "@react-native-firebase/app": 20.4.0
+  checksum: 7f9eb0905f265357eff6cc05ac3880eaffbadbe798eb9b520d834350e819e5a6fc67ae55dad9b6f14a981a204805ff080bd81afa2ef8e95e69a1e18a3fd5574d
+  languageName: node
+  linkType: hard
+
 "@react-native-firebase/functions@npm:^20.4.0":
   version: 20.4.0
   resolution: "@react-native-firebase/functions@npm:20.4.0"
@@ -4240,6 +4258,8 @@ __metadata:
     "@babel/runtime": ^7.20.0
     "@react-native-firebase/app": ^20.4.0
     "@react-native-firebase/auth": ^20.4.0
+    "@react-native-firebase/database": ^20.4.0
+    "@react-native-firebase/firestore": ^20.4.0
     "@react-native-firebase/functions": ^20.4.0
     "@react-native-google-signin/google-signin": ^12.2.1
     "@react-native/babel-preset": 0.74.86
